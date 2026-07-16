@@ -115,14 +115,16 @@
 
   // Back to top
   var backToTop = document.getElementById("back-to-top");
+  var contactSection = document.getElementById("contact");
   if (backToTop) {
-    document.addEventListener(
-      "scroll",
-      function () {
-        backToTop.classList.toggle("is-visible", window.scrollY > window.innerHeight);
-      },
-      { passive: true }
-    );
+    var updateBackToTop = function () {
+      var pastHero = window.scrollY > window.innerHeight;
+      var reachingContact = contactSection && contactSection.getBoundingClientRect().top < window.innerHeight;
+      backToTop.classList.toggle("is-visible", pastHero && !reachingContact);
+    };
+    document.addEventListener("scroll", updateBackToTop, { passive: true });
+    window.addEventListener("resize", updateBackToTop);
+    updateBackToTop();
     backToTop.addEventListener("click", function () {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });

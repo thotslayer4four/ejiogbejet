@@ -627,15 +627,17 @@ p { margin: 0; }
    Card grids (services / fleet)
    ========================================================================== */
 .card-row {
-  display: grid;
+  display: flex;
   gap: var(--space-24);
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(260px, 1fr);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   padding-bottom: var(--space-8);
-  margin: 0 calc(var(--space-24) * -1);
+  margin-inline: calc(var(--space-24) * -1);
   padding-inline: var(--space-24);
+}
+
+.card-row > * {
+  flex: 0 0 min(320px, calc(100% - var(--space-48)));
 }
 
 @media (min-width: 768px) {
@@ -643,7 +645,8 @@ p { margin: 0; }
 }
 
 @media (min-width: 1024px) {
-  .card-row { grid-auto-flow: initial; grid-template-columns: repeat(4, 1fr); overflow: visible; }
+  .card-row { display: grid; grid-template-columns: repeat(4, 1fr); overflow: visible; }
+  .card-row > * { flex: initial; }
 }
 
 .service-card {
@@ -865,6 +868,7 @@ p { margin: 0; }
   width: 100%;
 }
 .field textarea { padding: var(--space-16); min-height: 120px; resize: vertical; }
+.field input[type="date"] { height: 48px; }
 .field input:focus, .field select:focus, .field textarea:focus {
   outline: 2px solid var(--sky);
   outline-offset: 1px;
