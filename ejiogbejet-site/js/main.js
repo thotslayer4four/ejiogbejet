@@ -1,6 +1,14 @@
 (function () {
   "use strict";
 
+  var heroVideo = document.getElementById("hero-video");
+  if (heroVideo) {
+    heroVideo.playbackRate = 1.5;
+    heroVideo.addEventListener("loadedmetadata", function () {
+      heroVideo.playbackRate = 1.5;
+    });
+  }
+
   var header = document.getElementById("site-header");
   var carouselSection = document.getElementById("carousel");
   var hideThreshold = Infinity;
