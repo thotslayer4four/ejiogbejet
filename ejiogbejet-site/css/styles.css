@@ -633,15 +633,18 @@ p { margin: 0; }
   scroll-snap-type: x mandatory;
   padding-bottom: var(--space-8);
   margin-inline: calc(var(--space-24) * -1);
-  padding-inline: var(--space-24);
 }
 
 .card-row > * {
-  flex: 0 0 min(320px, calc(100% - var(--space-48)));
+  flex: 0 0 min(300px, calc(100% - var(--space-64)));
 }
 
+.card-row > *:first-child { margin-inline-start: var(--space-32); }
+.card-row > *:last-child { margin-inline-end: var(--space-32); }
+
 @media (min-width: 768px) {
-  .card-row { margin-inline: 0; padding-inline: 0; }
+  .card-row { margin-inline: 0; }
+  .card-row > *:first-child, .card-row > *:last-child { margin-inline: 0; }
 }
 
 @media (min-width: 1024px) {
@@ -868,7 +871,12 @@ p { margin: 0; }
   width: 100%;
 }
 .field textarea { padding: var(--space-16); min-height: 120px; resize: vertical; }
-.field input[type="date"] { height: 48px; }
+.field input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 48px;
+  line-height: 48px;
+}
 .field input:focus, .field select:focus, .field textarea:focus {
   outline: 2px solid var(--sky);
   outline-offset: 1px;
