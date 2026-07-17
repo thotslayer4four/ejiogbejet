@@ -632,19 +632,10 @@ p { margin: 0; }
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   padding-bottom: var(--space-8);
-  margin-inline: calc(var(--space-24) * -1);
 }
 
 .card-row > * {
   flex: 0 0 min(300px, calc(100% - var(--space-64)));
-}
-
-.card-row > *:first-child { margin-inline-start: var(--space-32); }
-.card-row > *:last-child { margin-inline-end: var(--space-32); }
-
-@media (min-width: 768px) {
-  .card-row { margin-inline: 0; }
-  .card-row > *:first-child, .card-row > *:last-child { margin-inline: 0; }
 }
 
 @media (min-width: 1024px) {
