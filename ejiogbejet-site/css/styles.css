@@ -832,6 +832,12 @@ p { margin: 0; }
 .contact-info-item strong { display: block; font-size: 0.95rem; }
 .contact-info-item span { color: var(--text-muted); font-size: 0.9rem; }
 
+/* Make the second terminal break onto its own line on narrow screens */
+.contact-info-item .term { display: inline; }
+@media (max-width: 560px) {
+  .contact-info-item .term--break { display: block; margin-top: 4px; }
+}
+
 .note {
   margin-top: var(--space-24);
   font-size: 0.82rem;
